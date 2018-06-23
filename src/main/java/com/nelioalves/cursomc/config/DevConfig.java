@@ -34,7 +34,7 @@ public class DevConfig {
 	}
 	
 	@Bean
-	public EmailService emailSErvice() {
+	public EmailService emailService() {
 		return new SmtpEmailService();
 	}
 
