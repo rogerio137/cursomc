@@ -2,6 +2,7 @@ package com.nelioalves.cursomc.security;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -56,5 +57,14 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		response.addHeader("Authorization", "Bearer "+ token);
 		response.addHeader("access-control-expose-headers", "Authorization");
 	}
+	
+	private String json() {
+        long date = new Date().getTime();
+        return "{\"timestamp\": " + date + ", "
+            + "\"status\": 401, "
+            + "\"error\": \"Não autorizado\", "
+            + "\"message\": \"Email ou senha inválidos\", "
+            + "\"path\": \"/login\"}";
+    }
 
 }
